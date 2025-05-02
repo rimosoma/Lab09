@@ -1,4 +1,5 @@
 import flet as ft
+import matplotlib.pyplot as plt
 
 
 class View(ft.UserControl):
@@ -25,17 +26,19 @@ class View(ft.UserControl):
 
         #ROW with some controls
         # text field for the name
-        self.txt_name = ft.TextField(
-            label="name",
+        self.minimum_dtnc = ft.TextField(
+            label="Distanza minima",
             width=200,
-            hint_text="Insert a your name"
+            hint_text="Insert the minimum distance between two airport",
+
         )
 
         # button for the "hello" reply
-        self.btn_hello = ft.ElevatedButton(text="Hello", on_click=self._controller.handle_hello)
-        row1 = ft.Row([self.txt_name, self.btn_hello],
+        self.btn_analyze = ft.ElevatedButton(text="Analysis", on_click=self._controller.handle_analyze)
+        row1 = ft.Row([self.minimum_dtnc, self.btn_analyze],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
+
 
         # List View where the reply is printed
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
